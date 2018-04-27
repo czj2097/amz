@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-  
 import time
 import urllib2
-import urllib
 import re
+import xlwt
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 ua = UserAgent()
@@ -59,7 +60,7 @@ while k<2:
                 	next_page = str(target_a.get('href'))
                 	print("next_page addr="+next_page)
 	if next_page == addr:
-		print("next page not exist! Output ASIN of start page.")
+		print("Next page not exist! Get "+str(k+1)+" pages in all.")
 		break;
 	else:
 		addr=next_page
@@ -67,3 +68,11 @@ while k<2:
 
 print(newResult)
 print("ASIN number: "+str(len(newResult)))
+
+wbk = xlwt.Workbook()
+sheet = wbk.add_sheet('sheet 1')
+line = 0
+for asin in newResult:
+	sheet.write(line,0,asin)
+	line = line + 1
+wbk.save('Product Details.xls')
