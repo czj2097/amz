@@ -63,7 +63,7 @@ def get_info_of_50item(obj):
 			price = 0.0
 			target_prc = re.search(r'\$([0-9,]*)\.([0-9]*)',str(li))
 			if target_prc != None:
-				price = float(str(target_prc.group()).replace('\$','').replace(',',''))
+				price = float(str(target_prc.group()).replace('$','').replace(',',''))
 			
 			star = 10.0
 			review = 0
@@ -135,10 +135,9 @@ def get_info_of_20item(obj,isFirst):
 			asin = re.search(r'/B([0-9A-Z]*)/',str(div)).group()
 			
 			price = 0.0
-			target_prc = re.search(r'\$([0-9],)\.([0-9]*)',str(div))
+			target_prc = re.search(r'\$([0-9,]*)\.([0-9]*)',str(div))
 			if target_prc != None:
-				#print(target_prc,target_prc.group(1))
-				price = float(str(target_prc.group()).replace('\$','').replace(',',''))
+				price = float(str(target_prc.group()).replace('$','').replace(',',''))
 			
 			star = 10.0
 			review = 0
